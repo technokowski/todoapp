@@ -1,0 +1,26 @@
+
+body {
+  background: #dafff7;
+  color: #33333a;
+  padding-top: 70px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #323232;
+}
+
+.main-color {
+  background-color: #0ea5a8 ;
+}
+
+.strike-through-td {
+    text-decoration: line-through;
+}
+
+
+
+
+
+
+
+

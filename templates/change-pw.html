@@ -1,0 +1,37 @@
+{% include 'layout.html' %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Change Password
+        </div>
+        <div class="card-body">
+            {% if msg %}
+                {% if msg == 'Password Updated' %}
+                <div class="alert alert-success" role="alert">
+                    {{msg}}
+                </div>
+                {% else %}
+                <div class="alert alert-danger" role="alert">
+                    {{msg}}
+                </div>
+                {% endif %}
+            {% endif %}
+            <form method="POST" action="/users/change-pw">
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <input type="password" class="form-control" name="current_pw"
+                           required>
+                    <label>New Password</label>
+                    <input type="password" class="form-control" name="new_pw1"
+                            required>
+                    <label>Confirm New Password</label>
+                    <input type="password" class="form-control" name="new_pw2"
+                            required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+
