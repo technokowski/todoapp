@@ -5,6 +5,6 @@ Consider it a student project, but it is up on Heroku and works.
 
 The SQLite3 db contains one user. The username and password is: 
 testuser
-testpassword
+test
 
 Try it out!
