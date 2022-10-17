@@ -1,5 +1,10 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600&display=swap');
+
+
 body {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
   background: #dafff7;
   color: #33333a;
   padding-top: 70px;
@@ -7,6 +12,38 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: #323232;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+}
+
+p {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+}
+
+td {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+}
+
+input {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+}
+
+th {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
+}
+
+button {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
+}
+
+a {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 500;
 }
 
 .main-color {
