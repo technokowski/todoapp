@@ -1,0 +1,25 @@
+{% include 'layout.html' %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            For those who invest...
+        </div>
+        <div class="card-body">
+            <h4>Important S&P 500 Info</h3>
+            <div class="alert alert-success" role="alert">
+                <h3>Percentage from High: {{msg}}%</h3>
+            </div>
+            <div class="alert alert-info" role="alert">
+                <h3>The current value is: {{msg_c}}</h3>
+            </div>
+            <div class="alert alert-warning" role="alert">
+                <h3>The 52 week high is: {{msg_h}}</h3>
+            </div>
+        <h1>"Patience is Key..."</h1>
+        </div>
+        <div class="card-footer text-muted">
+            <a href="/todos">Go Back</a>
+        </div>
+    </div>
+</div>
