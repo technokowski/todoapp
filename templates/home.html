@@ -13,6 +13,7 @@
   <thead>
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Priority</th>
       <th scope="col">Info</th>
       <th scope="col">Actions</th>
 
@@ -24,6 +25,7 @@
 {% if todo.complete == False %}
   <tr class="pointer" >
       <td>{{loop.index}}</td>
+      <td>{{todo.priority}}</td>
       <td>{{todo.title}}</td>
       <!-- <td>{{todo.description}}</td> -->
       <td>
