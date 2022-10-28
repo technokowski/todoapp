@@ -57,9 +57,18 @@ async def get_calc(request: Request):
     return templates.TemplateResponse("calculator.html", {"request": request})
 
 @router.post("/fincalc")
-async def calc_complete(request: Request, response_class=HTMLResponse, start: int = Form(...),
-                        peryear: int = Form(...), years: int = Form(...)):
-    rate: int = 1.10
+async def calc_complete(request: Request, response_class=HTMLResponse, start = Form(...),
+                        peryear = Form(...), years = Form(...)):
+    try:
+        start = int(start)
+        peryear = int(peryear)
+        years = int(years)
+        print("conversion success")
+    except:
+        msg = "numbers must not have extra symbols - digits only"
+        return templates.TemplateResponse("calculator.html", {"request": request, "msg": msg})
+
+    rate: int = 1.08
     ostr = humanize.intcomma(start)
     for i in range(1, years + 1):
         start = start * rate
