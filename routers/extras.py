@@ -17,6 +17,7 @@ import yahoo_fin.stock_info as si
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 import humanize
+import re 
 
 
 
@@ -60,10 +61,13 @@ async def get_calc(request: Request):
 async def calc_complete(request: Request, response_class=HTMLResponse, start = Form(...),
                         peryear = Form(...), years = Form(...)):
     try:
-        start = int(start)
-        peryear = int(peryear)
-        years = int(years)
-        print("conversion success")
+        find_int = re.findall(r'\d+', start)
+        start = int("".join(find_int))
+        find_int = re.findall(r'\d+', peryear)
+        peryear = int("".join(find_int))
+        find_int = re.findall(r'\d+', years)
+        years = int("".join(find_int))
+
     except:
         msg = "numbers must not have extra symbols - digits only"
         return templates.TemplateResponse("calculator.html", {"request": request, "msg": msg})
