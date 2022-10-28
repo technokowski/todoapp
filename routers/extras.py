@@ -61,6 +61,10 @@ async def get_calc(request: Request):
 async def calc_complete(request: Request, response_class=HTMLResponse, start = Form(...),
                         peryear = Form(...), years = Form(...)):
     try:
+        if "." in start:
+            start = start.split('.')[0]
+        if "." in peryear:
+            peryear = peryear.split('.')[0]
         find_int = re.findall(r'\d+', start)
         start = int("".join(find_int))
         find_int = re.findall(r'\d+', peryear)
@@ -72,14 +76,25 @@ async def calc_complete(request: Request, response_class=HTMLResponse, start = F
         msg = "numbers must not have extra symbols - digits only"
         return templates.TemplateResponse("calculator.html", {"request": request, "msg": msg})
 
-    rate: int = 1.08
+    fin = start
     ostr = humanize.intcomma(start)
-    for i in range(1, years + 1):
-        start = start * rate
-        start = start + peryear
-        start = round(start, 2)
+    
+    months = years * 12
+    rate_percentage = 8/100
+    mon_rate = rate_percentage / 12
+    mon_rate_f = float(format(mon_rate, '.8f'))
 
-    start = humanize.intcomma(start)
+    for i in range(0, months):
+        fin = fin + peryear
+        fin = fin + (fin * mon_rate_f)
+    
+    # This is for the Year
+    # for i in range(1, years + 1):
+    #     start = start * rate
+    #     start = start + peryear
+    #     start = round(start, 2)
+
+    start = humanize.intcomma(float(format(fin, '.2f')))
     return templates.TemplateResponse("calcresults.html", {"request": request, "start": start, "peryear": peryear, "years": years, "ostr": ostr})
 
 
