@@ -16,6 +16,7 @@ from yahoo_fin.stock_info import get_data
 import yahoo_fin.stock_info as si
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
+import humanize
 
 
 
@@ -50,3 +51,23 @@ async def do_magic():
 
     dads_magic = round(current_value / f_high * 100 - 100, 3)
     return dads_magic, current_value, f_high
+
+@router.get("/fincalc", response_class=HTMLResponse)
+async def get_calc(request: Request):
+    return templates.TemplateResponse("calculator.html", {"request": request})
+
+@router.post("/fincalc")
+async def calc_complete(request: Request, response_class=HTMLResponse, start: int = Form(...),
+                        peryear: int = Form(...), years: int = Form(...)):
+    rate: int = 1.10
+    ostr = humanize.intcomma(start)
+    for i in range(1, years + 1):
+        start = start * rate
+        start = start + peryear
+        start = round(start, 2)
+
+    start = humanize.intcomma(start)
+    return templates.TemplateResponse("calcresults.html", {"request": request, "start": start, "peryear": peryear, "years": years, "ostr": ostr})
+
+
+

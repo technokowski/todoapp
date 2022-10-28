@@ -1,0 +1,32 @@
+{% include 'layout.html' %}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Results
+        </div>
+        <div class="card-body">
+            <div class="alert alert-success" role="alert">
+                <h2>${{start}}</h2>
+            </div>
+            <p>If you start with ${{ostr}} and invest ${{peryear}} every year on the 31st of December over the course of {{years}} years,
+                if the market does 10% every year, you will have ${{start}}. This of course is not always a guaranteed
+                percentage, but it gives you an idea. <br><br>There are times the market severly drops into the negative, but there
+                are also times when it goes well above 10%. A good example is 1931, which dropped -47.07%, and 2019, 
+                which increased 28.88%.
+                <br><br>
+                It's a roller coaster ride, but the average is usually 10%. You can do the math yourself by 
+                visiting <a href="https://www.macrotrends.net/2526/sp-500-historical-annual-returns">this site</a> about historical
+                annual returns. Patience is the key with investing; Good things come to those who wait. 
+
+
+            </p>
+        </div>
+        <div class="card-footer text-muted">
+            <a href="/extras/fincalc">Try Again</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/todos">Home</a>
+        </div>
+    </div>
+</div>
+
