@@ -33,12 +33,13 @@ templates = Jinja2Templates(directory="templates")
 
 @router.get("/getstocks")
 async def get_stocks(request: Request):
+    user = await get_current_user(request)
     x = await do_magic()
     print(x)
     msg = x[0]
     msg_c = x[1]
     msg_h = x[2]
-    return templates.TemplateResponse("stocks.html", {"request": request, "msg": msg, "msg_c": msg_c, "msg_h": msg_h})
+    return templates.TemplateResponse("stocks.html", {"request": request, "msg": msg, "msg_c": msg_c, "msg_h": msg_h, "user": user})
 
 async def do_magic():
     quote_table = si.get_quote_table("^GSPC", dict_result=False)
@@ -55,7 +56,8 @@ async def do_magic():
 
 @router.get("/fincalc", response_class=HTMLResponse)
 async def get_calc(request: Request):
-    return templates.TemplateResponse("calculator.html", {"request": request})
+    user = await get_current_user(request)
+    return templates.TemplateResponse("calculator.html", {"request": request, "user": user})
 
 @router.post("/fincalc")
 async def calc_complete(request: Request, response_class=HTMLResponse, start = Form(...),
