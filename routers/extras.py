@@ -59,8 +59,8 @@ async def get_calc(request: Request):
     user = await get_current_user(request)
     return templates.TemplateResponse("calculator.html", {"request": request, "user": user})
 
-@router.post("/fincalc")
-async def calc_complete(request: Request, response_class=HTMLResponse, start = Form(...),
+@router.post("/fincalc", response_class=HTMLResponse)
+async def calc_complete(request: Request, start = Form(...),
                         peryear = Form(...), years = Form(...)):
     try:
         if "." in start:
