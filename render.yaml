@@ -18,6 +18,7 @@ services:
       - key: PYTHON_VERSION
         value: 3.10.7 
 
-databases: # Render PostgreSQL database
+databases: # Render PostgreSQL database 
   - name: todoski_purplewhale
+    plan: free
   #   ipAllowList: [] # only allow internal connections
