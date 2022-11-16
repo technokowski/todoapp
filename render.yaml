@@ -13,12 +13,12 @@ services:
     envVars:
       - key: DATABASE_URL # Render PostgreSQL database
         fromDatabase:
-          name: todoski_purplewhale
+          name: todoski-purplewhale
           property: connectionString
       - key: PYTHON_VERSION
         value: 3.10.7 
 
 databases: # Render PostgreSQL database 
-  - name: todoski_purplewhale
+  - name: todoski-purplewhale
     plan: free
   #   ipAllowList: [] # only allow internal connections
