@@ -124,12 +124,13 @@ async def complete_todo(request: Request, todo_id: int, db: Session = Depends(ge
 
 @router.get("/secret", response_class=HTMLResponse)
 async def secret_it(request: Request):
-    # user = await get_current_user(request)
+    user = await get_current_user(request)
     # if user is None:
     #     return RedirectResponse(url="/auth", status_code=status.HTTP_302_FOUND)
     msg = "magic"
-    return templates.TemplateResponse("secret.html", {"request": request, "msg": msg})
+    return templates.TemplateResponse("secret.html", {"request": request, "msg": msg, "user": user})
 
+# The below code moved to extras.py, but I've kept it because I don't want to break anything... yet.
 @router.get("/stocks", response_class=HTMLResponse)
 async def stock_info(request: Request):
     x = await do_magic()
